@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  transition: 0.5s;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Hover underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ff7eb3;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* MAIN CONTAINER */
+.container {
+  margin: 50px auto;
+  width: 80%;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(15px);
+  text-align: center;
+  animation: fadeSlide 1s ease;
+}
+
+/* INPUTS */
+input, textarea {
+  width: 80%;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* BUTTON */
+button {
+  padding: 12px 25px;
+  border-radius: 20px;
+  border: none;
+  background: #ff7eb3;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #ff4f91;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.2);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  animation: pop 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+.page {
+  margin: 80px 0;
+  padding: 40px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 15px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+ul {
+  text-align: left;
+  max-width: 600px;
+  margin: auto;
+}
+
+li {
+  margin: 10px 0;
+}
+/* ANIMATIONS */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

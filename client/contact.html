@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216');">
+    <div class="bg-animation"></div>
+
+<style>
+.bg-animation {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/cubes.png');
+  opacity: 0.2;
+  z-index: -1;
+  animation: move 20s linear infinite;
+}
+
+@keyframes move {
+  from { background-position: 0 0; }
+  to { background-position: 500px 500px; }
+}
+</style>
+</body>
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="contact.html">Contact</a>
+<a href="admin.html">Admin</a>
+<a href="login.html">Login</a>
+</nav>
+
+<div class="container">
+<h2>Contact Form</h2>
+
+<form id="form">
+<input id="name" placeholder="Name" required>
+<input id="email" placeholder="Email" required>
+<textarea id="message"></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  await fetch("http://localhost:5000/api/data", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      message: message.value
+    })
+  });
+
+  alert("Data Submitted!");
+});
+</script>
+
+</body>
+</html>

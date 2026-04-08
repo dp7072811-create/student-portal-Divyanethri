@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5'); background-size:cover; text-align:center; padding-top:100px;">
+
+<h1 style="color:white;">🔐 Admin Login</h1>
+
+<div style="background:white; padding:30px; border-radius:10px; display:inline-block;">
+
+<input type="text" id="username" placeholder="Username"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+<a href="#admin">Admin</a>
+<a href="#login">Login</a>
+</nav>
+
+
+<script>
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if(user === "admin" && pass === "1234") {
+    localStorage.setItem("auth", "true");
+    alert("Login Successful");
+    window.location.href = "admin.html";
+  } else {
+    alert("Invalid Credentials");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav style="background:black; padding:10px; text-align:center;">
+  <a href="index.html" style="color:white; margin:10px;">Home</a>
+  <a href="about.html" style="color:white; margin:10px;">About</a>
+  <a href="services.html" style="color:white; margin:10px;">Services</a>
+  <a href="contact.html" style="color:white; margin:10px;">Contact</a>
+  <a href="admin.html" style="color:white; margin:10px;">Admin</a>
+  <a href="login.html" style="color:white; margin:10px;">Login</a> <!-- ✅ THIS -->
+</nav>
+<div class="container">
+
+<!-- HOME -->
+<div id="home" class="page">
+<h1>🎓 Student Portal</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+</nav>
+
+<div class="container">
+<h2>Student Details Form</h2>
+
+<form id="form">
+<input id="name" placeholder="Full Name" required>
+<input id="email" placeholder="Email" required>
+<input id="course" placeholder="Course" required>
+<input id="phone" placeholder="Phone Number" required>
+<button type="submit">Submit Details</button>
+</form>
+
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  await fetch("http://localhost:5000/api/data", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      course: course.value,
+      phone: phone.value,
+      message: message.value
+    })
+  });
+
+  alert("Details Submitted Successfully!");
+});
+</script>
+
+</body>
+</html>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+<h2>About</h2>
+<p>This portal provides student services</p>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="page">
+<h2>Services</h2>
+<p>Multiple services available</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<h2>Contact</h2>
+<form id="form">
+<input id="name" placeholder="Name" required>
+<input id="email" placeholder="Email" required>
+<textarea id="message"></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="page">
+<h2>Admin </h2>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="Admin()">Admin</button>
+</div>
+
+</div>
+
+<script>
+// CONTACT FORM
+document.getElementById("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  await fetch("http://localhost:5000/api/data", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      name: name.value,
+      email: email.value,
+      message: message.value
+    })
+  });
+
+  alert("Data Submitted!");
+});
+
+// LOAD ADMIN DATA
+async function loadData() {
+  const res = await fetch("http://localhost:5000/api/data");
+  const data = await res.json();
+
+  document.getElementById("data").innerHTML =
+    data.map(i => `<div class='card'>${i.name} - ${i.email}</div>`).join("");
+}
+
+// LOGIN
+function login() {
+  if (user.value === "admin" && pass.value === "1234") {
+    alert("Login Success! Scroll to Admin section");
+  } else {
+    alert("Invalid credentials");
+  }
+}
+</script>
+
+</body>
+</html>
